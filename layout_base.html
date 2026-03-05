@@ -5,45 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Layout Base</title>
     <style>
-        
-        div{background-color: rgb(0, 0, 255);
+        body{
+            margin: 0;
+        }
+        header{
+            background-color: rgb(0, 0, 255);
             color: rgb(141, 0, 184);
-            /* width: 350px;
-            height: 300px;
-            margin-top: 120px;
+            /* width: 350px; */
+            /* height: 300px; */
+            /* margin-top: 120px;
             margin-left: 110px; */
         
             padding: 40px;
+            display: flex;
+    
+
         }
       
         h1{background-color: chartreuse;
+            margin: auto;
             
             
         }
         
+        img{
+            height: 100px;
+        }
         
+        ul{display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            justify-content: space-between;
+        }
+        a{padding: 10px;
+        color: red;
+        display: block;
+        background-color: black;
+        text-align: center;
+        text-decoration: none;
+        }
+        li{
+            flex-grow: 1;
+        }
+a:visited
+{
+color: chartreuse;
+}
+a:hover
+{
+color: rgb(0, 38, 255);
+}
+a:active
+{
+color: gold;
+}
+
     </style>
 </head>
 <body>
-    <table>
-        <tr>
-            
-            <td>
-                
-                <div>
-                    <h1>Leyout Base</h1>
-                </div>
-                
-            </td>    
-        <td>
+   
 
-            <div>
-                
-            </div>
-        </td>    
-        </tr>
-    </table>  
-    
+            <header>
+<img src="Midias/husky.jpg" alt="Logo">
+                <h1>Husky</h1>
+
+            </header>
+             
+                <nav>
+<!-- ul>li*5>a{Link $} -->
+                                <ul>
+                                    <li><a href="Teste.html" target="_blank">Link 1</a></li>
+                                    <li><a href="midias.html" target="_blank">Link 2</a></li>
+                                    <li><a href="Textos.html" target="_blank">Link 3</a></li>
+                                    <li><a href="" target="_blank">Link 4</a></li>
+                                    <li><a href="" target="_blank">Link 5</a></li>
+                                </ul>
+                            
+                            </ul>
+                        
+                        </nav>
+   
     
 </body>
 </html>
