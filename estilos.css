@@ -1,18 +1,48 @@
-p{color:#ff0000}
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Eater&display=swap');
+</style>
+
+p{color:#00f134
+text-shadow: 2px 2px 5px red;}
 
 h1{color:rgb(0, 0, 248)}
-
+ 
 body{background-image: url(Midias/istockphoto-935523878-170667a.jpg);
-/* background-repeat: no-repeat;
-background-size: cover; */
+background-repeat: no-repeat;
+background-size: cover;
 background-attachment: fixed;
 }
 
 h3{border:2px solid Tomato;}
 
-h3{color: rgb(0, 255, 255);}
+h3{color: rgb(0, 255, 255);
+}
 
 a{color:rgb(225, 0, 255);
     background-color:rgb(0, 255, 0);
     text-decoration: none;
+    text-shadow: 2px 2px 5px red;
 }
+ @font-face {
+    font-family: Wallter;
+    src: url(Midias/Walter.ttf);
+ }
+
+ h1{
+  text-shadow: 2px 2px 5px red;
+
+    font-family: Wallter;
+    font-size: 50px;
+ }
+
+  @font-face {
+    font-family: Eater;
+    src: url(Midias/Eater.ttf);
+ }
+
+p.eater-regular {
+  font-family: "Eater", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
