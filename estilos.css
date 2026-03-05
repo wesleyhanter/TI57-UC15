@@ -1,19 +1,16 @@
-<style>
 @import url('https://fonts.googleapis.com/css2?family=Eater&display=swap');
-</style>
 
-p{color:#00f134
-text-shadow: 2px 2px 5px red;}
 
-h1{color:rgb(0, 0, 248)}
+
+h1{color:rgb(0, 0, 255)}
  
-body{background-image: url(Midias/istockphoto-935523878-170667a.jpg);
+/* body{background-image: url(Midias/istockphoto-935523878-170667a.jpg); */
 background-repeat: no-repeat;
 background-size: cover;
 background-attachment: fixed;
-}
+/* } */
 
-h3{border:2px solid Tomato;}
+h3{border:2px solid rgb(255, 99, 71);}
 
 h3{color: rgb(0, 255, 255);
 }
@@ -45,4 +42,3 @@ p.eater-regular {
   font-weight: 400;
   font-style: normal;
 }
-
