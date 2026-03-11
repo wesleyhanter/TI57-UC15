@@ -3,144 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Layout Base</title>
-    <style>
-        /* Seletor universal */
-        *{
-            box-sizing: border-box;
-        }
-        
-        body{
-            margin: 0;
-        }
-        
-        header{
-            background-color: rgb(0, 0, 255);
-            color: rgb(189, 8, 8);
-            /* width: 350px; */
-            /* height: 300px; */
-            /* margin-top: 120px;
-            margin-left: 110px; */
-        
-            padding: 40px;
-            display: flex;
-    
+    <title>Leyout Bootstrap</title>
 
-        }
-        
-        h1{
-            
-            /* background-color: chartreuse; */
-            margin: auto;      
-        }
-        
-        header img{
-            height: 100px;
-        }
-        aside img{
-            width: 100%;
-        }
-        
-        ul{display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            justify-content: space-between;
-        }
-        a{padding: 10px;
-        color: red;
-        display: block;
-        background-color: black;
-        text-align: center;
-        text-decoration: none;
-        }
-        li{
-            flex-grow: 1;
-        }
-a:visited
-{
-color: chartreuse;
-}
-a:hover
-{
-/* color: rgb(0, 38, 255); */
-background-color: blue;
-}
-a:active
-{
-color: gold;
-}
-main{
-    width: 100%;
-    text-align: center;
-    padding: 20px;
-}
-aside{
-    width: 100%;
-    text-align: center;
-    padding: 20px;
-  
-}
-div{
-    display: flex;
-    flex-wrap: wrap;
-}
-p{
-    text-align: left;
-}
-p.destaque {
-    color: darkorange;
-}
-/* h1.destaque{
-    color: rgb(0, 255, 13);
+   <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+<!-- Alternativamente, você pode usar o link CDN para incluir o Bootstrap diretamente do servidor, sem precisar baixar os arquivos localmente: -->
+   <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<style>
+/* *{
+        box-sizing: border-box;
 } */
-p#importante{
-    color: darkmagenta;
-}
-p.rodape{
-    color: white;
-    background-color: black;
-    text-align: center;
-    padding: 10px;
-}
-@media (min-width:576px){
-    main{
-        width: 70%;
+:root{ 
+        --bs-primary-rgb: 60, 180, 220;
+               
     }
-    aside{
-        width: 30%;
-    }
-}
 
-    </style>
+    /* header img{
+        width: 250px;
+    } */
+
+</style>
 </head>
+
 <body>
-   
+    <header class="text-bg-primary row align-items-center" >
+        <figure class="col-2">
+        <img class="img-fluid" src="Midias/husky.jpg" alt="Logo">
+        </figure>
+  
+        <h1 class="col-10" >Husky</h1>     
 
-            <header>
-<img src="Midias/husky.jpg" alt="Logo">
-                <h1>Husky</h1>
-            
-
-            </header>
+    </header>
              
-                <nav>
-<!-- ul>li*5>a{Link $} -->
-                                <ul>
-                                    <li><a href="Teste.html" target="_blank">Link 1</a></li>
-                                    <li><a href="midias.html" target="_blank">Link 2</a></li>
-                                    <li><a href="Textos.html" target="_blank">Link 3</a></li>
-                                    <li><a href="" target="_blank">Link 4</a></li>
-                                    <li><a href="" target="_blank">Link 5</a></li>
+                <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+                   <!-- ul>li*5>a{Link $} -->
+                                <ul class="navbar-nav">
+                                    <li class="nav-item"><a class="nav-link" href="Teste.html" target="_blank">Link 1</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="midias.html" target="_blank">Link 2</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="Textos.html" target="_blank">Link 3</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="" target="_blank">Link 4</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="" target="_blank">Link 5</a></li>
                                 </ul>
                             
-                            </ul>
-                        
+                                                    
                         </nav>
-<div>
-    <main>
-
-        <h1>Husky Siberiano</h1>
+<div class="row">
+    <main class="col-sm-8">
+        <h1 class="text-center">Husky Siberiano</h1>
         <p class="destaque">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis veniam nam corporis commodi, quidem cupiditate sit sapiente temporibus obcaecati deleniti reprehenderit non, quam, adipisci eius enim aliquid debitis? Saepe, error!</p>
         <p id="importante">Aspernatur impedit distinctio ea velit facere dolorum ipsum iste consequuntur repudiandae quibusdam aut expedita labore, nisi inventore quis nobis error repellendus aliquid fuga quasi adipisci modi minus fugiat. Quidem, repellat.</p>
         <p>Possimus distinctio odio mollitia dolorem recusandae, necessitatibus vero nihil repellat amet! Eius fugit cumque explicabo tenetur delectus quod adipisci, saepe dicta voluptas et aut harum ullam ducimus, magni odio accusantium.</p>
@@ -148,16 +57,25 @@ p.rodape{
         </p>
 
     </main>
-    
-    <aside>
-        <h1 class="destaque">Vermelho</h1>
+
+    <aside class=" col-sm-4">
+        <h1 class="text-center">Vermelho</h1>
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque est expedita quo reiciendis delectus alias dolores ipsa consequuntur repellendus consectetur? Similique quia eum ea dolorum ipsam temporibus laboriosam eius nostrum.</p>
-        <img src="Midias/husky-olho-azul-verde.jpg" alt="husky-olho-azul-verde">
+        <img src="Midias/husky-olho-azul-verde.jpg" class="img-thumbnail" alt="husky-olho-azul-verde">
     </aside>
 </div>     
-<footer>
-    <p class="rodape">&copy; 2026 Husky. Todos os direitos reservados. Desenvolvido para UC15 - TI57</p>
+<footer class="row bg-dark text-white">
+    <div class="col-sm-4">
+        <i class="bi bi-whatsapp"></i>
+        <i class="bi bi-youtube"></i>
+        <i class="bi bi-facebook"></i>
+        <i class="bi bi-instagram"></i>
+        <i class="bi bi-airplane"></i>
+        <i class="bi bi-twitter"></i>
+        <i class="bi bi-tiktok"></i>
+    </div>
+    <p class=" bg-dark text-white col-sm-8 " > &copy;  2026 Husky. Todos os direitos reservados. Desenvolvido para UC15 - TI57</p>
+
 </footer>       
-    
 </body>
 </html>
