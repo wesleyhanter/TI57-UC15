@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UTENA — Você não está sozinha</title>
+
+  <!-- Fonte Google (opcional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ================================
+       VARIÁVEIS DE TEMA (ajuste à vontade)
+    ===================================*/
+    :root{
+      --roxo:        #6B2C90;  /* primária */
+      --magenta:     #C73E7E;  /* destaque */
+      --botao:       #FF6B6B;  /* call-to-action */
+      --cinza-claro: #ECEAF1;  /* fundo */
+      --cinza:       #BFB9CC;  /* elementos */
+      --texto:       #2A103A;  /* texto escuro */
+      --branco:      #FFFFFF;
+      --radius-lg:   18px;
+      --radius-md:   12px;
+      --shadow-sm:   0 6px 16px rgba(0,0,0,.12);
+      --shadow-md:   0 12px 28px rgba(0,0,0,.18);
+      --gradiente:   linear-gradient(180deg, var(--roxo) 0%, var(--magenta) 55%, #D982A4 100%);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{
+      margin:0;
+      font-family:Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--texto);
+      background:
+        /* topo roxo-magenta */
+        var(--gradiente) fixed no-repeat,
+        /* base cinza clara */
+        var(--cinza-claro);
+      background-size: 100% 52vh, 100% 100%;
+    }
+
+    /* ====== LAYOUT ====== */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:18px 22px;
+      color:var(--branco);
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+    }
+    .logo{
+      width:40px; height:40px; border-radius:12px;
+      background: radial-gradient(circle at 30% 30%, #FF9BC2, #FF6B6B 40%, #B22E73 70%);
+      box-shadow: inset 0 0 10px rgba(255,255,255,.35);
+    }
+    .brand h1{
+      font-size:20px; margin:0; letter-spacing:.5px;
+    }
+
+    nav a{
+      color:#F9DFF1; text-decoration:none; font-weight:600; margin-left:18px;
+    }
+    nav a:hover{ text-decoration:underline; }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items:center;
+      gap:28px;
+      padding:28px 22px 56px;
+      max-width:1080px; margin:0 auto;
+    }
+    @media (max-width: 860px){
+      .hero{ grid-template-columns:1fr; padding-bottom:24px; }
+    }
+
+    .hero h2{
+      color:var(--branco);
+      font-size: clamp(26px, 3.6vw, 40px);
+      margin:6px 0 12px;
+    }
+    .hero p{
+      color:#FFE9F4;
+      max-width:52ch;
+      margin:0 0 18px;
+      line-height:1.55;
+    }
+    .cta{
+      display:flex; gap:12px; flex-wrap:wrap;
+    }
+    .btn{
+      appearance:none; border:none; cursor:pointer;
+      padding:12px 18px;
+      border-radius:999px;
+      font-weight:700;
+      transition:.2s transform ease, .2s box-shadow ease, .2s opacity ease;
+    }
+    .btn--primary{
+      color:var(--branco); background:var(--botao); box-shadow: var(--shadow-sm);
+    }
+    .btn--ghost{
+      color:var(--branco); background: rgba(255,255,255,.15); backdrop-filter: blur(4px);
+      border:1px solid rgba(255,255,255,.35);
+    }
+    .btn:hover{ transform: translateY(-1px); }
+    .btn:active{ transform: translateY(0); opacity:.9; }
+
+    /* Card de Login inspirado nos mockups */
+    .card-login{
+      background: radial-gradient(140% 120% at 20% 0%, rgba(255,255,255,.18) 0%, rgba(255,255,255,.05) 40%, rgba(0,0,0,.05) 100%),
+                  #2B0F40;
+      color:var(--branco);
+      border-radius: 22px;
+      padding:22px;
+      box-shadow: var(--shadow-md);
+      border:1px solid rgba(255,255,255,.12);
+      max-width: 360px; width:100%;
+      margin-inline:auto;
+    }
+    .card-login h3{
+      margin:0 0 8px; font-size:20px; color:#F6C9E0;
+    }
+    .form-row{ display:flex; flex-direction:column; gap:6px; margin-top:12px; }
+    label{ font-size:14px; color:#F5DCEF; }
+    input[type="email"],
+    input[type="password"]{
+      padding:12px 14px; border-radius:14px; border:1px solid rgba(255,255,255,.25);
+      background: rgba(255,255,255,.15); color:#fff; outline:none;
+    }
+    input::placeholder{ color:#E8CFE1; }
+    .link-menor{
+      display:inline-block; margin-top:8px; font-size:13px; color:#FFD9EC; text-decoration:none;
+    }
+    .link-menor:hover{ text-decoration:underline; }
+
+    /* Seção de recursos com cartões */
+    .recursos{
+      background: var(--cinza-claro);
+      margin-top: -24px;
+      border-radius: 24px 24px 0 0;
+      padding: 48px 22px 64px;
+    }
+    .recursos h4{
+      text-align:center; margin:0 0 22px; font-size:22px; color:var(--roxo);
+    }
+    .grid{
+      max-width:1080px; margin:0 auto;
+      display:grid; gap:16px;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+    }
+    @media (max-width: 980px){ .grid{ grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 540px){ .grid{ grid-template-columns: 1fr; } }
+
+    .card{
+      background:#fff; border-radius:18px; padding:18px; box-shadow: var(--shadow-sm);
+      display:flex; gap:12px; align-items:center;
+      border:1px solid #EEE7F3;
+      transition:.2s transform ease, .2s box-shadow ease;
+    }
+    .card:hover{ transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+    .icon{
+      width:46px; height:46px; border-radius:14px; flex: 0 0 46px;
+      display:grid; place-items:center; color:#fff; font-weight:900;
+      background: linear-gradient(135deg, var(--magenta), var(--roxo));
+      box-shadow: inset 0 0 10px rgba(255,255,255,.25);
+    }
+    .card .txt{ line-height:1.25; }
+    .card .txt strong{ display:block; color:var(--roxo); }
+    .card .txt span{ color:#5b4c69; font-size:14px; }
+
+    footer{
+      background: #f5f3f9; border-top:1px solid #e9e2f1;
+      padding:18px 22px; text-align:center; color:#5b4c69; font-size:14px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- TOPO -->
+  <header>
+    <div class="brand">
+      <img width="100px" src="Utena/Logo.png" alt="Logo">
+      <h1>UTENA</h1>
+    </div>
+    <nav aria-label="principal">
+      <a href="#recursos">Recursos</a>
+      <a href="#entrar">Entrar</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <h2>Você não está sozinha</h2>
+      <p>Um espaço seguro para mensagens, práticas de apoio e conexão com grupos —
+         com orientação e acolhimento.</p>
+      <div class="cta">
+        <button class="btn btn--primary">Criar conta</button>
+        <a class="btn btn--ghost" href="#recursos">Ver recursos</a>
+      </div>
+    </div>
+
+    <!-- Card de Login -->
+    <div class="card-login" id="entrar">
+      <h3>Bem‑vindo</h3>
+      <form onsubmit="event.preventDefault(); alert('Login de demonstração 🙂');">
+        <div class="form-row">
+          <label for="email">E-mail</label>
+          <input id="email" type="email" placeholder="nome@exemplo.com" required>
+        </div>
+        <div class="form-row">
+          <label for="senha">Senha</label>
+          <input id="senha" type="password" placeholder="••••••••" required>
+        </div>
+        <div class="form-row" style="margin-top:16px;">
+          <button class="btn btn--primary" style="width:100%;">Entrar</button>
+        </div>
+        <a class="link-menor" href="#">Esqueci a senha</a>
+      </form>
+    </div>
+  </section>
+
+  <!-- RECURSOS -->
+  <section class="recursos" id="recursos" aria-labelledby="titulo-recursos">
+    <h4 id="titulo-recursos">Apoio &amp; Orientação</h4>
+    <div class="grid">
+      <article class="card">
+        <div class="icon">✉️</div>
+        <div class="txt">
+          <strong>Mensagens</strong>
+          <span>Converse com segurança.</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="icon">⚙️</div>
+        <div class="txt">
+          <strong>Configurações</strong>
+          <span>Privacidade e acessibilidade.</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="icon">❤️</div>
+        <div class="txt">
+          <strong>Rede/Práticas</strong>
+          <span>Atividades de autocuidado.</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="icon">👥</div>
+        <div class="txt">
+          <strong>Conteúdo &amp; Grupos</strong>
+          <span>Materiais e comunidades.</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer id="contato">
+    © 2026 UTENA — Página de estudo em HTML/CSS. Ajuste cores, textos e cartões como quiser.
+  </footer>
+</body>
+</html>

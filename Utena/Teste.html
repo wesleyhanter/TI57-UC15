@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UTENA</title>
+
+<style>
+
+    /* -------------------- CORES DO DESIGN -------------------- */
+    :root {
+        --grad-top: #4B1B78;
+        --grad-mid: #A2329C;
+        --grad-bottom: #F3D7E8;
+
+        --login-bg: rgba(60, 0, 90, 0.40);
+        --btn-orange: #EB5257;
+        --btn-orange-dark: #D8434A;
+
+        --card-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        --card-radius: 20px;
+
+        --text-light: #ffffff;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Arial', sans-serif;
+    }
+
+    body {
+        background: linear-gradient(to bottom, var(--grad-top), var(--grad-mid) 50%, var(--grad-bottom) 90%);
+        color: white;
+    }
+
+
+    /* -------------------- HEADER -------------------- */
+    header {
+        width: 100%;
+        padding: 22px 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 22px;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #f8e8ff;
+        margin-left: 30px;
+        font-size: 16px;
+    }
+
+    nav a:hover {
+        color: white;
+    }
+
+
+    /* -------------------- HERO -------------------- */
+    .hero {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 80px 60px;
+    }
+
+    .hero-text h1 {
+        font-size: 45px;
+        font-weight: bold;
+        margin-bottom: 18px;
+    }
+
+    .hero-text p {
+        max-width: 480px;
+        font-size: 18px;
+        opacity: 0.9;
+        margin-bottom: 30px;
+    }
+
+    .btns {
+        display: flex;
+        gap: 18px;
+    }
+
+    .btn {
+        padding: 12px 30px;
+        border-radius: 30px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .btn-primary {
+        background: var(--btn-orange);
+        color: white;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    }
+
+    .btn-outline {
+        background: transparent;
+        border: 2px solid white;
+        color: white;
+    }
+
+    .btn:hover {
+        transform: scale(1.03);
+    }
+
+
+    /* -------------------- LOGIN CARD -------------------- */
+
+    .login-card {
+        width: 330px;
+        background: var(--login-bg);
+        padding: 25px;
+        border-radius: 22px;
+        backdrop-filter: blur(6px);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+    }
+
+    .login-card h2 {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .login-card label {
+        font-size: 14px;
+        margin-bottom: 5px;
+        display: block;
+        color: #fff;
+    }
+
+    .login-card input {
+        width: 100%;
+        padding: 12px;
+        border-radius: 12px;
+        border: none;
+        margin-bottom: 14px;
+        font-size: 15px;
+    }
+
+    .login-card button {
+        width: 100%;
+        padding: 14px;
+        border-radius: 12px;
+        background: var(--btn-orange);
+        color: white;
+        font-size: 17px;
+        border: none;
+        cursor: pointer;
+        margin-top: 8px;
+    }
+
+    .login-card a {
+        text-decoration: none;
+        color: #ffd4ff;
+        font-size: 13px;
+        display: block;
+        text-align: right;
+        margin-top: 6px;
+    }
+
+
+    /* -------------------- CARDS DE RECURSOS -------------------- */
+
+    .recursos-section {
+        margin-top: 80px;
+        background: #F2EEF7;
+        color: #333;
+        padding: 60px;
+        text-align: center;
+        border-radius: 50px 50px 0 0;
+    }
+
+    .recursos-section h2 {
+        color: #3b1658;
+        font-size: 26px;
+        margin-bottom: 40px;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 25px;
+    }
+
+    .card {
+        background: white;
+        padding: 25px;
+        border-radius: 20px;
+        box-shadow: var(--card-shadow);
+        text-align: center;
+    }
+
+    .card-icone {
+        font-size: 42px;
+        margin-bottom: 15px;
+    }
+
+    .card h3 {
+        color: #4B1B78;
+        margin-bottom: 6px;
+    }
+
+    .card p {
+        color: #555;
+        font-size: 15px;
+    }
+
+
+    /* -------------------- RODAPÉ -------------------- */
+
+    footer {
+        padding: 20px;
+        text-align: center;
+        background: #F2EEF7;
+        color: #777;
+        font-size: 14px;
+    }
+
+</style>
+
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <h1>UTENA</h1>
+    </div>
+
+    <nav>
+        <a href="#recursos">Recursos</a>
+        <a href="#entrar"></a>Entrar</a>
+        <a href="#contato">Contato</a>
+    </nav>
+</header>
+
+
+<section class="hero">
+
+    <div class="hero-text">
+        <h1>Você não está sozinha</h1>
+        <p>Um espaço seguro para mensagens, práticas de apoio e conexão com grupos.</p>
+
+        <div class="btns">
+            <button class="btn btn-primary">Criar conta</button>
+            <button class="btn btn-outline">Ver recursos</button>
+        </div>
+    </div>
+
+    <div class="login-card">
+        <h2>Bem-Vindo</h2>
+
+        <label>E-mail</label>
+        <input type="email" placeholder="seuemail@exemplo.com">
+
+        <label>Senha</label>
+        <input type="password" placeholder="•••••••">
+
+        <button>Entrar</button>
+
+        Esqueci a senha →</a>
+    </div>
+
+</section>
+
+
+<section class="recursos-section">
+    <h2>Apoio & Orientação</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-icone">📩</div>
+            <h3>Mensagens</h3>
+            <p>Converse com segurança.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-icone">⚙️</div>
+            <h3>Configurações</h3>
+            <p>Privacidade e acessibilidade.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-icone">❤️</div>
+            <h3>Rede/Práticas</h3>
+            <p>Atividades de autocuidado.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-icone">👥</div>
+            <h3>Conteúdo & Grupos</h3>
+            <p>Materiais e comunidades.</p>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+© 2026 UTENA — Página de estudo em HTML/CSS.
+</footer>
+
+</body>
+</html>
