@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Inscrição</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 40px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        p {
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        fieldset {
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        legend {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .campo {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 12px;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        input, select, textarea {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        /* Radios e checkbox sem alinhamento em coluna */
+        .inline {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .botoes {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="reset"] {
+            background-color: #ccc;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<form action="https://jkorpela.fi/cgi-bin/echo.cgi" method="post" target="_blank">
+
+    <h2>Formulário de Inscrição</h2>
+    <p>Preencha os dados abaixo para se inscrever</p>
+
+    <fieldset>
+        <legend>Dados Pessoais</legend>
+
+        <div class="campo">
+            <label for="nome">Nome completo</label>
+            <input type="text" name="nome" id="nome" placeholder="Digite seu nome" required>
+        </div>
+
+        <div class="campo">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Digite seu email" required>
+        </div>
+
+        <label>Tipo:</label><br>
+        <input type="radio" name="tipo" id="aluno" value="aluno" class="inline">
+        <label for="aluno" class="inline">Aluno</label>
+
+        <input type="radio" name="tipo" id="professor" value="professor" class="inline">
+        <label for="professor" class="inline">Professor</label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Endereço</legend>
+
+        <div class="campo">
+            <label for="cep">CEP</label>
+            <input type="text" name="cep" id="cep" placeholder="00000-000">
+        </div>
+
+        <div class="campo">
+            <label for="rua">Rua</label>
+            <input type="text" name="rua" id="rua" placeholder="Nome da rua">
+        </div>
+
+        <div class="campo">
+            <label for="cidade">Cidade</label>
+            <input type="text" name="cidade" id="cidade" placeholder="Sua cidade">
+        </div>
+
+    </fieldset>
+
+    <fieldset>
+        <legend>Dados de Acesso</legend>
+
+        <div class="campo">
+            <label for="senha">Senha</label>
+            <input type="password" name="senha" id="senha" placeholder="Crie uma senha" required>
+        </div>
+
+    </fieldset>
+
+    <fieldset>
+        <legend>Informações Adicionais</legend>
+
+        <div class="campo">
+            <label for="nivel">Nível</label>
+            <select name="nivel" id="nivel" required>
+                <option value="">Selecione</option>
+                <option value="Iniciante">Iniciante</option>
+                <option value="Intermediario">Intermediário</option>
+                <option value="Avancado">Avançado</option>
+            </select>
+        </div>
+
+        <div class="campo">
+            <label for="msg">Mensagem</label>
+            <textarea name="msg" id="msg" placeholder="Escreva algo..."></textarea>
+        </div>
+
+    </fieldset>
+
+    <!-- Checkbox separado -->
+    <input type="checkbox" name="promo" id="promo" value="sim">
+    <label for="promo">Desejo receber promoções</label>
+
+    <div class="botoes">
+        <input type="reset" value="Limpar">
+        <input type="submit" value="Inscrever-se">
+    </div>
+
+</form>
+
+</body>
+</html>

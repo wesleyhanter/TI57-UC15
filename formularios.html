@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+
+        h2 {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        p {
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        fieldset{
+            border: 1px solid rgb(0, 0, 0);
+            margin-bottom: 20px;
+            padding: 20px;
+            /* border: none;
+            margin-bottom: 20px; */
+            
+        }
+        form{
+                        
+            
+        }
+
+
+        select, label, textarea{
+            width: 100%;
+            display: inline-block;
+
+        }
+        label[for="aluno"], label[for=professor]{
+         display: inline-flex;   
+         width: 100%;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+         input[for="radio"], input[for=checkbox]{
+               display: flex;
+
+         }
+
+            input[type="submit"], input[type="reset"]{
+                width: auto;
+                padding: 10px 20px;
+                background-color: #007BFF;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                
+    
+            }
+
+
+
+    </style>
+    <!-- <script>
+        function verSenha(){
+            document.getElementById("senha").type = "text";
+        }
+    </script> -->
+    <script>
+                function verSenha() {
+                    let senha = document.getElementById("senha");
+                    let olho = document.getElementById("olho");
+                    if (senha.type === "password"){
+                        senha.type = "text";
+                        olho.classList.replace("bi-eye", "bi-eye-slash")
+                    } else {
+                        senha.type = "password";
+                        olho.classList.replace("bi-eye-slash", "bi-eye")
+                    }
+                }
+            </script>
+</head>
+<body>
+    <form action="https://jkorpela.fi/cgi-bin/echo.cgi" method="post" target="_blank" >
+        <h2>Formulário de Inscrição</h2>
+        <p>Preencha os dados abaixo para se inscrever</p>
+        <fieldset>
+            <legend>Dados Pessoais</legend>
+
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" id="nome" placeholder="Nome">
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" placeholder="Email">
+            <br>
+            <input type="radio" name="tipo" id="aluno" value="aluno">
+            <label for="aluno">Aluno</label>
+            <input type="radio" name="tipo" id="professor" value="professor">
+            <label for="professor">Professor</label>
+            
+        </fieldset>
+        
+        <fieldset>
+            <legend>Endereço</legend>
+            <label for="cep">CEP:</label>
+            <input type="text" name="cep" id="cep" placeholder="CEP">
+            <br>
+            <label for="rua">Rua:</label>
+            <input type="text" name="rua" id="rua" placeholder="Rua">
+            <br>
+            <label for="cidade">Cidade:</label>
+            <input type="text" name="cidade" id="cidade" placeholder="Cidade">
+        </fieldset>
+        
+        <fieldset>
+            <legend>Dados de Acesso</legend>
+            <label for="senha">Senha:</label>
+            <input type="password" name="senha" id="senha" placeholder="Senha">
+            <button type="button" onclick="verSenha()" id="olho" class="bi bi-eye"></button>
+            
+            
+  
+        </fieldset>
+
+        <fieldset>
+            <legend>Informações Adicionais</legend>
+            <br>
+            <select name="nivel" id="nivel" required>
+                <option value="">Escolha seu nivel</option>
+                <option value="Iniciante">Iniciante</option>
+                <option value="Intermediario">Intermediário</option>
+                <option value="Avancado">Avançado</option>
+            </select>
+            <br>
+            <textarea name="msg" id="msg" placeholder="Escreva sua mensagem aqui..."></textarea>
+            <br>
+        </fieldset>
+        <input type="checkbox" name="promo" id="promo" value="sim">
+        <label for="promo">Desejo receber promoções</label>
+
+
+
+
+        <br>
+        <input type="reset" value="Limpar">
+        <input type="submit" value="Enviar"> 
+   
+    </form>
+
+</body>
+</html>
