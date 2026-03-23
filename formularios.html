@@ -27,9 +27,13 @@
             margin-bottom: 20px; */
             
         }
-        form{
-                        
-            
+         form {
+            max-width: 500px;
+            margin: 40px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
 
 
@@ -64,6 +68,31 @@
                 
     
             }
+            span {
+                color: red;
+                font-size: 12px;
+        }
+        .campo-senha {
+    position: relative;
+    width: 100%;
+}
+
+.campo-senha input {
+    width: 100%;
+    /* padding-right: 35px; espaço pro ícone */
+}
+
+.campo-senha i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #555;
+}
+
+        
 
 
 
@@ -84,8 +113,55 @@
                         senha.type = "password";
                         olho.classList.replace("bi-eye-slash", "bi-eye")
                     }
+                    
                 }
+            
+                function senhaForte (){
+                let senha = document.getElementById("senha").value;
+                let testNum = /^(?=.*\d)/;
+                let testMin = /^(?=.*[a-z])/;
+                let testMai = /^(?=.*[A-Z])/;
+                let testEsp = /^(?=.*[@$!%*#?&])/;
+                let testTam = /^.{8,}$/;
+                let mensagem = "";
+                 if (!senha.match(testNum)){
+                    mensagem += "A senha deve conter pelo menos um número.";
+                }  if (!senha.match(testMin)){
+                    mensagem += "<br>A senha deve conter pelo menos uma letra minúscula.";
+                }  if (!senha.match(testMai)){
+                    mensagem += "<br>A senha deve conter pelo menos uma letra maiúscula.";
+                }  if (!senha.match(testEsp)){
+                    mensagem += "<br>A senha deve conter pelo menos um caractere especial.";
+                }  if (!senha.match(testTam)){
+                    mensagem += "<br>A senha deve ter pelo menos 8 caracteres.";
+                }
+                document.getElementById("mensagem-senha").innerHTML = mensagem;
+                
+                if (mensagem == ""){
+                    document.getElementById("senha2").disabled = false;
+                } else {
+                    document.getElementById("senha2").disabled = true;
+                }
+            }
+
+                function senhaIgual() {
+                    let senha = document.getElementById("senha").value;
+                    let senha2 = document.getElementById("senha2").value;
+                    let mensagem = "";
+                    if (senha !== senha2) {
+                        mensagem = "As senhas não coincidem.";
+                    }
+                    document.getElementById("mensagem-senha2").innerHTML = mensagem;
+                
+                if (mensagem == ""){
+                    document.getElementById("enviar").disabled = false;
+                } else {
+                    document.getElementById("enviar").disabled = true;
+                }
+            }
+            
             </script>
+            
 </head>
 <body>
     <form action="https://jkorpela.fi/cgi-bin/echo.cgi" method="post" target="_blank" >
@@ -122,9 +198,22 @@
         <fieldset>
             <legend>Dados de Acesso</legend>
             <label for="senha">Senha:</label>
-            <input type="password" name="senha" id="senha" placeholder="Senha">
-            <button type="button" onclick="verSenha()" id="olho" class="bi bi-eye"></button>
-            
+            <!-- <input onkeyup="senhaForte()" type="password" name="senha" id="senha" placeholder="Senha">
+            <button type="button" onclick="verSenha()" id="olho" class="bi bi-eye"></button> -->
+            <div class="campo-senha">
+            <input onkeyup="senhaForte()" type="password" name="senha" id="senha" placeholder="Senha">
+            <i onclick="verSenha()" id="olho" class="bi bi-eye"></i>
+            </div>
+            <p>
+                <span id="mensagem-senha"></span>
+            </p>
+
+            <label for="senha2">Confirme a senha:</label>
+            <input onkeyup="senhaIgual()" type="password" name="senha2" id="senha2" placeholder="Confirme a senha" disabled>
+            <p>
+                <span id="mensagem-senha2"></span>
+            </p>
+
             
   
         </fieldset>
@@ -150,7 +239,8 @@
 
         <br>
         <input type="reset" value="Limpar">
-        <input type="submit" value="Enviar"> 
+        <input type="submit" value="Enviar" disabled id="enviar">
+         
    
     </form>
 

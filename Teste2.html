@@ -148,8 +148,46 @@
         <legend>Dados de Acesso</legend>
 
         <div class="campo">
-            <label for="senha">Senha</label>
-            <input type="password" name="senha" id="senha" placeholder="Crie uma senha" required>
+            <!-- <label for="senha">Senha</label>
+            <input type="password" name="senha" id="senha" placeholder="Crie uma senha" required> -->
+            <input type="password" id="senha" oninput="validarSenha()">
+<i id="olho" class="bi bi-eye" onclick="verSenha()"></i>
+<p id="msg"></p>
+
+<script>
+    function verSenha() {
+        let senha = document.getElementById("senha");
+        let olho = document.getElementById("olho");
+
+        if (senha.type === "password"){
+            senha.type = "text";
+            olho.classList.replace("bi-eye", "bi-eye-slash")
+        } else {
+            senha.type = "password";
+            olho.classList.replace("bi-eye-slash", "bi-eye")
+        }
+    }
+
+    function validarSenha() {
+        let senha = document.getElementById("senha").value;
+        let msg = document.getElementById("msg");
+
+        let regra = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&]).{8,}$/;
+
+        if (senha.length === 0) {
+            msg.innerText = "";
+            return;
+        }
+
+        if (!regra.test(senha)) {
+            msg.innerText = "Senha fraca ❌";
+            msg.style.color = "red";
+        } else {
+            msg.innerText = "Senha forte ✅";
+            msg.style.color = "green";
+        }
+    }
+</script>
         </div>
 
     </fieldset>
