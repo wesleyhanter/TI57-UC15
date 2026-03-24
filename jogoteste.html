@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>ARCADE INSANO 🔥</title>
+
+<style>
+body{
+    font-family: Arial;
+    text-align:center;
+    background:#111;
+    color:white;
+}
+.jogo{display:none;margin-top:20px;}
+button{margin:5px;padding:10px;cursor:pointer;border-radius:8px;}
+canvas{
+    background:black;
+}
+#alvo{
+    position:absolute;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🔥 ARCADE INSANO 🔥</h1>
+
+<button onclick="show('snake')">🐍 Snake</button>
+<button onclick="show('click')">⚡ Reflexo</button>
+<button onclick="show('ppt')">🎮 PPT</button>
+
+<div id="snake" class="jogo">
+<h2>Snake</h2>
+<p>Pontuação: <span id="score">0</span></p>
+<canvas id="game" width="300" height="300"></canvas>
+</div>
+
+<div id="click" class="jogo">
+<h2>Reflexo</h2>
+<button onclick="start()">Start</button>
+<p id="tempo"></p>
+<button id="alvo" onclick="hit()">CLIQUE</button>
+</div>
+
+<div id="ppt" class="jogo">
+<h2>PPT</h2>
+<button onclick="ppt('pedra')">Pedra</button>
+<button onclick="ppt('papel')">Papel</button>
+<button onclick="ppt('tesoura')">Tesoura</button>
+<p id="r1"></p>
+</div>
+
+<script>
+function show(id){
+document.querySelectorAll(".jogo").forEach(j=>j.style.display="none");
+document.getElementById(id).style.display="block";
+}
+
+/* SOM */
+function beep(){
+let ctx=new (window.AudioContext||window.webkitAudioContext)();
+let osc=ctx.createOscillator();
+osc.connect(ctx.destination);
+osc.start();
+osc.stop(ctx.currentTime+0.1);
+}
+
+/* PPT */
+function ppt(e){
+let op=["pedra","papel","tesoura"];
+let pc=op[Math.floor(Math.random()*3)];
+r1.innerText = pc==e?"Empate":Math.random()>0.5?"Ganhou":"Perdeu";
+beep();
+}
+
+/* REFLEXO */
+let t;
+function start(){
+setTimeout(()=>{
+alvo.style.left=Math.random()*400+"px";
+alvo.style.top=Math.random()*400+"px";
+t=Date.now();
+},1000);
+}
+function hit(){
+tempo.innerText=(Date.now()-t)/1000+"s";
+beep();
+}
+
+/* SNAKE */
+let canvas=document.getElementById("game");
+let ctx=canvas.getContext("2d");
+
+let snake=[{x:150,y:150}];
+let dx=10,dy=0;
+let food={x:50,y:50};
+let score=0;
+
+document.addEventListener("keydown",e=>{
+if(e.key=="ArrowUp"){dx=0;dy=-10;}
+if(e.key=="ArrowDown"){dx=0;dy=10;}
+if(e.key=="ArrowLeft"){dx=-10;dy=0;}
+if(e.key=="ArrowRight"){dx=10;dy=0;}
+});
+
+function draw(){
+ctx.fillStyle="black";
+ctx.fillRect(0,0,300,300);
+
+ctx.fillStyle="lime";
+snake.forEach(s=>ctx.fillRect(s.x,s.y,10,10));
+
+ctx.fillStyle="red";
+ctx.fillRect(food.x,food.y,10,10);
+
+let head={x:snake[0].x+dx,y:snake[0].y+dy};
+snake.unshift(head);
+
+if(head.x==food.x && head.y==food.y){
+food.x=Math.floor(Math.random()*30)*10;
+food.y=Math.floor(Math.random()*30)*10;
+score++;
+document.getElementById("score").innerText=score;
+beep();
+}else{
+snake.pop();
+}
+
+/* colisão */
+if(head.x<0||head.y<0||head.x>=300||head.y>=300){
+alert("Game Over!");
+snake=[{x:150,y:150}];
+score=0;
+}
+
+/* auto colisão */
+for(let i=1;i<snake.length;i++){
+if(head.x==snake[i].x && head.y==snake[i].y){
+alert("Game Over!");
+snake=[{x:150,y:150}];
+score=0;
+}
+}
+}
+
+setInterval(draw,100);
+</script>
+
+</body>
+</html>

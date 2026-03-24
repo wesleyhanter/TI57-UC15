@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplos de JavaScript</title>
+    <style>
+        button{
+            background-color: rgb(0, 0, 0);
+            border-radius: 20px;
+            ;
+        }
+        .verde{
+            color: green;
+        }
+        .vermelho{
+            color: red;
+        }
+        .azul{
+            color: blue;
+        }
+        .simples{
+            color: white;
+        }
+
+
+
+
+
+
+
+    </style>
+</head>
+
+<body>
+    
+    <h1>Passagem de Parâmetros nas funções</h1>
+    <p id="teste">Olá, mundo!</p>
+    <button class="verde" style="color: green;" onclick="verde()" >Verde</button>
+    <button  class="vermelho" style="color: red;" onclick="vermelho()">Vermelho</button>
+    <button class="azul" style="color: blue;" onclick="azul()">Azul</button>
+    <script>
+        function verde (){
+            document.getElementById('teste').style.color = 'green';
+
+        }
+        function vermelho(){
+            document.getElementById('teste').style.color = 'red';
+
+        }
+        function azul(){
+            document.getElementById('teste').style.color = 'blue';
+        }
+    </script>
+    <h1>Parâmetros</h1>
+    <button class="verde" onclick="alterarCor ('green' , 'lightgreen')">Verde</button>
+    <button class="vermelho" onclick="alterarCor ('red' , 'lightcoral')">Vermelho</button>
+    <button class="azul" onclick="alterarCor ('blue' , 'lightblue')">Azul</button>
+    
+    <script>
+        function alterarCor(cor,fundo){
+            document.getElementById("teste").style.color = cor;
+            document.getElementById("teste").style.backgroundColor = fundo;
+        }
+        
+    </script>
+
+    <h2>Multicores</h2>
+    <form>
+        <label for="corTexto">Cor do texto</label>
+        <input type="text" id="corTexto" placeholder="Digite a cor do texto">
+        <br><br>
+        <label for="corFundo">Cor do Fundo</label>
+        <input type="text" id="corFundo" placeholder="Digite a cor do fundo">
+        <br><br>
+        <button class="simples"type="button" onclick="alterarCor(corTexto.value, corFundo.value)">Alterar Cores</button>
+    </form>
+
+    <script>
+    function traduzirCor(cor){
+        const cores = {
+            "vermelho": "red",
+            "verde": "green",
+            "azul": "blue",
+            "preto": "black",
+            "branco": "white",
+            "amarelo": "yellow",
+            "roxo": "purple",
+            "rosa": "pink",
+            "cinza": "gray",
+            "laranja": "orange"
+        };
+
+        return cores[cor.toLowerCase()] || cor;
+    }
+
+    function alterarCor(corTexto, corFundo){
+        let texto = document.getElementById("teste");
+
+        texto.style.color = traduzirCor(corTexto);
+        texto.style.backgroundColor = traduzirCor(corFundo);
+    }
+</script>
+<h2>Seletor de cores</h2>
+<form>
+    <input oninput="alterarCor2(this.value)" type="color" id="corTexto">
+</form>
+
+<p id="teste2">Bom dia</p>
+<script>
+    function alterarCor2(cor){
+        document.getElementById("teste2").style.color = cor;
+    }
+</script>
+
+<h2>Exemplo 3</h2>
+<input type="range" oninput="pegaValor(this.value)">
+<input type="text" id="valor" readonly>
+<script>
+
+function pegaValor(valor){
+    document.getElementById("valor").value = valor;
+}
+
+</script>
+
+<h1>Estrutura de repetição</h1>
+<button class="simples"onclick="repeticao()">Executar Repetiçao</button>
+<script>
+    function repeticao(){
+       let resposta = prompt("Você tem uma dívida. Vai pagar? (sim/não)");
+
+       while (resposta != "S" && resposta != "s") {
+        resposta = prompt("Você tem uma dívida. Vai pagar? Responda S ou N")
+
+       }
+       alert("Obrigado por apgar sua dívida!");
+    }
+</script>
+
+<h2>For</h2>
+<button class="simples" onclick="repeticao2()">Executar Repetição</button>
+<ul id="lista2"></ul>
+<script>
+    function repeticao2(){
+        let conteudo = ""
+        for(let i = 0; i < 5; i++){
+            conteudo += "<li>" + i + "</li>";
+        }
+        document.getElementById("lista2").innerHTML = conteudo;
+   }
+</script>
+
+<input type="number" id="qtd" placeholder="Quantidade">
+<button class="simples" onclick="repeticao3()">Criar</button>
+
+<ul id="lista"></ul>
+
+<script>
+function repeticao3(){
+    let quantidade = document.getElementById("qtd").value;
+
+    let conteudo = "";
+
+    for(let i = 0; i < quantidade; i++){
+        conteudo += "<li>" + i + "</li>";
+    }
+
+    document.getElementById("lista").innerHTML = conteudo;
+}
+</script>
+
+<h1>Vetores (ou Arrays)</h1>
+
+<input type="text" id="novaFruta" placeholder="Digite uma fruta">
+<button class="simples" onclick="adicionarFruta()">Adicionar</button>
+
+<ul id="frutas2"></ul>
+<script>
+    let frutas = ["Maçã", "Banana", "Laranja", "Uva", "Melancia"];
+
+    function mostrarFrutas() {
+        let lista = "";
+
+        for (let i = 0; i < frutas.length; i++) {
+            lista += "<li>" + frutas[i] + "</li>";
+        }
+
+        document.getElementById("frutas2").innerHTML = lista;
+    }
+
+    function adicionarFruta() {
+        let nova = document.getElementById("novaFruta").value;
+
+        if (nova.trim() !== "") {
+            frutas.push(nova); // adiciona no array
+            document.getElementById("novaFruta").value = ""; // limpa input
+            mostrarFrutas(); // atualiza lista
+        } else {
+            alert("Digite uma fruta válida!");
+        }
+    }
+
+    // mostrar lista inicial
+    mostrarFrutas();
+</script>
+
+
+
+
+
+
+<br><br><br>
+<button onclick="resetar()" class="simples">Resetar</button>
+
+<script>
+function resetar(){
+    location.reload();
+}
+</script>
+
+</body>
+</html>

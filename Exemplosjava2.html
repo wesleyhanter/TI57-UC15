@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Exemplos JavaScript</title>
+
+<style>
+    body{
+        font-family: Arial;
+    }
+
+    button{
+        background-color: black;
+        color: white;
+        border-radius: 10px;
+        padding: 5px 10px;
+        margin-top: 5px;
+        cursor: pointer;
+    }
+
+    section{
+        border: 2px solid #ccc;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+    }
+
+    input{
+        margin: 5px 0;
+        padding: 5px;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>📚 Exemplos de JavaScript</h1>
+
+<!-- 🎨 BLOCO 1 -->
+<section>
+<h2>🎨 Trocar Cor (Simples)</h2>
+
+<p id="teste">Olá, mundo!</p>
+
+<button onclick="trocarCor('green')">Verde</button>
+<button onclick="trocarCor('red')">Vermelho</button>
+<button onclick="trocarCor('blue')">Azul</button>
+</section>
+
+<!-- 🎨 BLOCO 2 -->
+<section>
+<h2>🎨 Trocar Cor (Com Fundo)</h2>
+
+<button onclick="alterarCor('green','lightgreen')">Verde</button>
+<button onclick="alterarCor('red','lightcoral')">Vermelho</button>
+<button onclick="alterarCor('blue','lightblue')">Azul</button>
+</section>
+
+<!-- 🌈 BLOCO 3 -->
+<section>
+<h2>🌈 Escolher Cores Digitando</h2>
+
+<input type="text" id="corTexto" placeholder="Cor do texto">
+<input type="text" id="corFundo" placeholder="Cor do fundo">
+
+<br>
+<button onclick="alterarCorInput()">Aplicar</button>
+</section>
+
+<!-- 🎯 BLOCO 4 -->
+<section>
+<h2>🎯 Seletor de Cor</h2>
+
+<input type="color" oninput="alterarCor2(this.value)">
+<p id="teste2">Bom dia</p>
+</section>
+
+<!-- 🎚️ BLOCO 5 -->
+<section>
+<h2>🎚️ Range</h2>
+
+<input type="range" oninput="pegaValor(this.value)">
+<input type="text" id="valor" readonly>
+</section>
+
+<!-- 🔁 BLOCO 6 -->
+<section>
+<h2>🔁 While</h2>
+
+<button onclick="repeticao()">Executar</button>
+</section>
+
+<!-- 🔢 BLOCO 7 -->
+<section>
+<h2>🔢 For (fixo)</h2>
+
+<button onclick="repeticao2()">Executar</button>
+<ul id="lista2"></ul>
+</section>
+
+<!-- 🔢 BLOCO 8 -->
+<section>
+<h2>🔢 For (com input)</h2>
+
+<input type="number" id="qtd" placeholder="Quantidade">
+<button onclick="repeticao3()">Criar</button>
+
+<ul id="lista"></ul>
+</section>
+
+<!-- 🍎 BLOCO 9 -->
+<section>
+<h2>🍎 Lista de Frutas</h2>
+
+<input type="text" id="novaFruta" placeholder="Digite uma fruta">
+<button onclick="adicionarFruta()">Adicionar</button>
+
+<ul id="frutas2"></ul>
+</section>
+
+<!-- 🔄 BLOCO 10 -->
+<section>
+<h2>🔄 Reset</h2>
+
+<button onclick="resetar()">Recarregar Página</button>
+</section>
+
+<script>
+// 🎨 BLOCO 1
+function trocarCor(cor){
+    document.getElementById('teste').style.color = cor;
+}
+
+// 🎨 BLOCO 2 e 3
+function traduzirCor(cor){
+    const cores = {
+        vermelho: "red",
+        verde: "green",
+        azul: "blue",
+        preto: "black",
+        branco: "white",
+        amarelo: "yellow",
+        roxo: "purple",
+        rosa: "pink",
+        cinza: "gray",
+        laranja: "orange"
+    };
+    return cores[cor.toLowerCase()] || cor;
+}
+
+function alterarCor(cor, fundo){
+    let texto = document.getElementById("teste");
+    texto.style.color = cor;
+    texto.style.backgroundColor = fundo;
+}
+
+function alterarCorInput(){
+    let corTexto = document.getElementById("corTexto").value;
+    let corFundo = document.getElementById("corFundo").value;
+
+    alterarCor(traduzirCor(corTexto), traduzirCor(corFundo));
+}
+
+// 🎯 BLOCO 4
+function alterarCor2(cor){
+    document.getElementById("teste2").style.color = cor;
+}
+
+// 🎚️ BLOCO 5
+function pegaValor(valor){
+    document.getElementById("valor").value = valor;
+}
+
+// 🔁 BLOCO 6
+function repeticao(){
+   let resposta = prompt("Vai pagar? (S/N)");
+
+   while (resposta != "S" && resposta != "s") {
+        resposta = prompt("Responda S ou N");
+   }
+
+   alert("Obrigado!");
+}
+
+// 🔢 BLOCO 7
+function repeticao2(){
+    let conteudo = "";
+
+    for(let i = 0; i < 5; i++){
+        conteudo += "<li>" + i + "</li>";
+    }
+
+    document.getElementById("lista2").innerHTML = conteudo;
+}
+
+// 🔢 BLOCO 8
+function repeticao3(){
+    let quantidade = document.getElementById("qtd").value;
+    let conteudo = "";
+
+    for(let i = 0; i < quantidade; i++){
+        conteudo += "<li>" + i + "</li>";
+    }
+
+    document.getElementById("lista").innerHTML = conteudo;
+}
+
+// 🍎 BLOCO 9
+let frutas = ["Maçã", "Banana", "Laranja"];
+
+let frutasPermitidas = [
+    "maçã","banana","laranja","uva","melancia",
+    "abacaxi","manga","pera","kiwi","morango"
+];
+
+function mostrarFrutas(){
+    let lista = "";
+
+    for(let i = 0; i < frutas.length; i++){
+        lista += "<li>" + frutas[i] + "</li>";
+    }
+
+    document.getElementById("frutas2").innerHTML = lista;
+}
+
+function adicionarFruta(){
+    let nova = document.getElementById("novaFruta").value.toLowerCase().trim();
+
+    if(nova === ""){
+        alert("Digite algo!");
+        return;
+    }
+
+    if(!frutasPermitidas.includes(nova)){
+        alert("Isso não é uma fruta válida 🍎");
+        return;
+    }
+
+    if(frutas.includes(nova)){
+        alert("Fruta já adicionada!");
+        return;
+    }
+
+    frutas.push(nova);
+    document.getElementById("novaFruta").value = "";
+    mostrarFrutas();
+}
+
+mostrarFrutas();
+
+// 🔄 BLOCO 10
+function resetar(){
+    location.reload();
+}
+</script>
+
+</body>
+</html>
