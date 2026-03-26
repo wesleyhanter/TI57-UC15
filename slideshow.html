@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slideshow</title>
+<style>
+    *{box-sizing: border-box;
+    }
+    .container {
+        max-width: 80%;
+        margin: auto;
+        position: relative;
+    }
+
+    .meuSlide img {
+        width: 100%;
+
+
+    }
+    .numero {
+        position: absolute;
+        /* background-color: white; */
+        top:  0px;
+        left: 0px;
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+
+    }
+    .texto{
+        color: white;
+        position: absolute;
+        font-size: 15px;
+        padding: 8px 12px;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+        /* margin-bottom: 10px; */
+        box-sizing: border-box;
+    
+    }
+    .prev, .next{
+        position: absolute;
+        top: 50%;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 16px;
+        transform: translateY(-50%);
+        /* background-color: gray; */
+        transition: background-color 1s ease;
+        border-radius: 0 3px 3px 0;
+        cursor: pointer;
+        user-select: none;
+
+    }
+    .next{
+        right: 0px;
+        border-radius: 3px 0 0 3px;
+
+    }
+    .prev:hover, .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+        
+    }
+    .dot:hover{
+        background-color: #717171;
+
+    }
+    .dot{
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 1s ease;
+    }
+    .fade{
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+    .meuSlide{
+        display: none;
+    }
+    .ativo, .dot:hover{
+        background-color: #717171;
+    }
+
+
+    
+
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="meuSlide">
+            <div class="numero">1/4</div>
+            <img src="Midias/img01.jpg" alt="Rocha e Floresta">
+            <div class="texto">Legenda 1</div>
+        </div>
+        <div class="meuSlide">
+            <div class="numero">2/4</div>
+            <img src="Midias/img02.jpg" alt="Montanha nevada">
+            <div class="texto">Legenda 2</div>
+
+        </div>
+        <div class="meuSlide">
+            <div class="numero">3/4</div>
+            <img src="Midias/img03.jpg" alt="Montanha, rio e estrada">
+            <div class="texto">Legenda 3</div>
+        </div>
+        <div class="meuSlide">
+            <div class="numero">4/4</div>
+            <img src="Midias/img04.jpg" alt="Aurora Boeral">
+            <div class="texto">Legenda 4</div>
+        </div>
+        <a class="prev" onclick="avancarSlide(-1)">&#10094;</a>
+        <a class="next" onclick="avancarSlide(1)">&#10095;</a>
+
+    </div>
+    <br>
+    <div style="text-align: center;">
+        <span class="dot ativo " onclick="mostrarSlide(0)"> </span>
+        <span class="dot" onclick="mostrarSlide(1)"> </span>
+        <span class="dot" onclick="mostrarSlide(2)"> </span>
+        <span class="dot" onclick="mostrarSlide(3)"> </span>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+        mostrarSlide(slideIndex);
+        
+        function avancarSlide (n){
+            mostrarSlide(slideIndex += n);
+
+        }
+
+        // function mostrarSlide(n){
+        //  let i;
+        //  let slides = document.getElementsByClassName("meuSlide");
+        // let dots = document.getElementsByClassName("ponto");
+
+        // if (n > slides.length - 1){
+        //     slideIndex = 0;
+
+        // }
+        // if (n < 0){
+        //     slideIndex = slides.length - 1;
+        // }
+        
+        // for(i = 0 ; i < slides.length; i++){
+        //     slides[i].style.display = "none";
+
+        //  }
+        //  slides[slideIndex].style.display = "block";
+
+        // }
+    function mostrarSlide(n){
+    let i;
+    let slides = document.getElementsByClassName("meuSlide");
+    let pontos = document.getElementsByClassName("dot");
+
+    slideIndex = n;
+
+    if (slideIndex > slides.length - 1){
+        slideIndex = 0;
+    }
+    if (slideIndex < 0){
+        slideIndex = slides.length - 1;
+    }
+    
+    for(i = 0 ; i < slides.length; i++){
+        slides[i].style.display = "none";
+    }
+        for(i = 0 ; i < pontos.length; i++){
+        pontos[i].className = pontos[i].className.replace(" ativo", "");
+    }
+    
+    slides[slideIndex].style.display = "block";
+    pontos[slideIndex].className += " ativo";
+}
+
+</script>
+
+
+
+    
+</body>
+</html>
